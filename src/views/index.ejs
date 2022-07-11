@@ -1,0 +1,148 @@
+<!-- VISTA PRINCIPAL  -->
+
+<!-- INCLUIR LA VISTA HEADER  -->
+<%- include ("partials/header") -%>
+ 
+<!-- MENSAJE: INGRESA TU RUTINA  -->
+<div class="col-md-4 offset-md-4">
+<h1 style="text-align:center;margin: 20px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: black;">Arma tu rutina</1>
+</div>
+
+
+<!-- Formulario -->
+<form action="/add" method="POST">
+  <div class="container" style="display: flex;padding:10px;background-color:rgb(0, 0, 0);border-style:solid; border-color:rgb(237, 233, 233);">
+    <div class="row">
+      <!-- DIA  -->  
+      <div class="col-md-6">
+        <h5 style="text-align:left;margin: 1px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(232, 200, 14); ">Día</h5>
+      </div> 
+      <!-- HORA INICIO-->   
+      <div class="col-md-3"> 
+        <h5 style="text-align:left;margin: 1px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(232, 200, 14);  ">Hora inicio</h5>
+      </div> 
+      <!-- HORA  FIN -->  
+      <div class="col-md-3">
+      <h5 style="text-align:left;margin: 1px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(232, 200, 14);  ">Hora Fin</h5>
+      </div> 
+   
+     <!-- -------------------------------------------------------------------------------------------------------------------------- -->
+     <!-- BARRA CALENDARIO -->
+       <div class="col-md-6">
+        <div class="input-group date" style="padding: 1px;" id="datepicker">
+          <input type="text" name="day" class="form-control" placeholder="mm/dd/aaaa" required>
+          <span class="input-group-append">
+          <span class="input-group-text bg-white">
+            <i class="fa fa-calendar"></i>
+          </span>
+          </span>
+          </div> 
+      </div>
+
+      <!-- BARRA HORA INICIO  -->
+      <div class="col-md-3">
+        <div class="clearfix">
+          <div class="input-group clockpicker pull-center" data-placement="left" data-align="top" data-autoclose="true">
+            <input type="text" name="hourinit" class="form-control" placeholder="00:00" required>
+            <span class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa fa-clock-o"></i>
+              </span>
+            </span>
+          </div>
+        </div>
+		  </div>
+      <!-- BARRA HORA FIN -->
+      <div class="col-md-3">
+        <div class="clearfix">
+          <div class="input-group clockpicker pull-center" data-placement="left" data-align="top" data-autoclose="true">
+            <input type="text" name="hourfinish" class="form-control" placeholder="00:00" required>
+            <span class="input-group-append">
+              <span class="input-group-text bg-white">
+                <i class="fa fa-clock-o"></i>
+             </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- --------------------------------------------------------------------------------------------------------------------------- -->
+      <!-- RUTINA -->
+  
+      <div class="col-md-12">
+        <h5 style="text-align:left;margin: 1px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(232, 200, 14);">Rutina</h5>
+        <select class="form-select" name="title" aria-label="Default select example" required>
+          <option value="">Seleccion el tipo de rutina</option>
+          <option value="Brazos y hombros">Brazos y hombros</option>
+          <option value="Abdomen y espalda">Abdomen y espalda</option>
+          <option value="Piernas y gluteos">Piernas y gluteos</option>
+        </select>
+      </div>
+   
+
+      <div class="col-md-10">
+        <h5 style="text-align:left;margin: 1px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(232, 200, 14);">Alimentación</h5>
+        <select class="form-select" name="eat" aria-label="Default select example" required>
+          <option value="">Seleccion su tipo de Alimentación</option>
+          <option value="Proteina y frutas">Proteina y frutas</option>
+          <option value="Batido y verduras">Batido y verduras</option>
+          <option value="Legumbres y cereales">Legumbres y cereales</option>
+        </select>
+      </div>
+
+      <!-- BOTON -->
+      <div class="col-md-1" style=" top:5px;left:50px;display: flex;justify-content: center;align-items: center;">
+        <button type="submit" class="btn btn-success" style="background-color:rgb(232, 200, 14); color: black;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: large;">Agregar</button>
+      </div>
+    </div>
+  </div>
+</form> 
+  
+<hr>
+
+<!-- --------------------------------------------------------------------------------------------------------------- -->
+<!-- CARDS -->
+<div class="container">
+  <div class="row">
+    <% for(var i=0;i<rutinas.length;i++){ %>
+    <div class="card" style="width: 20rem; margin:5px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:  rgb(232, 200, 14); background-color:rgb(36, 33, 33);border-style:solid; border-color:rgb(237, 233, 233);">
+      <!-- Condicionales para la imagen -->
+      <% if(rutinas[i].title=="Brazos y hombros"){%>
+        <a href="https://www.youtube.com/watch?v=ZIm_qrJSOds"><img src="https://i.ytimg.com/vi/ZIm_qrJSOds/maxresdefault.jpg" class="card-img-top" alt="Brazos y hombros"></a>
+        <% } else if(rutinas[i].title=="Abdomen y espalda"){%>
+          <a href="https://www.youtube.com/watch?v=gglryB_YORQ&t=65s"><img src="https://i.ytimg.com/vi/gglryB_YORQ/maxresdefault.jpg" class="card-img-top" alt="Abdomen y espalda"></a>
+        <% } else if(rutinas[i].title=="Piernas y gluteos"){%>
+         <a href="https://www.youtube.com/watch?v=UBdGY2RQReU"><img src="https://i.ytimg.com/vi/UBdGY2RQReU/maxresdefault.jpg" class="card-img-top" alt="Piernas y gluteos"></a> 
+        <% } %>
+      
+        <div class="card-body">
+          <h5 class="card-title"><%= rutinas[i].title %></h5>
+        </div>
+        <ul class="list-group list-group-flush" >
+          <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:  rgb(232, 200, 14); background-color:rgb(36, 33, 33);border-style:solid; border-color:rgb(237, 233, 233);">Numero: <%= i+1 %> </li>
+          <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:  rgb(232, 200, 14);background-color:rgb(36, 33, 33);border-style:solid; border-color:rgb(237, 233, 233);">Día: <%= rutinas[i].day %> </li>
+          <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:  rgb(232, 200, 14); background-color:rgb(36, 33, 33);border-style:solid; border-color:rgb(237, 233, 233);">Hora Inicio: <%= rutinas[i].hourinit %> </li>
+          <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:  rgb(232, 200, 14); background-color:rgb(36, 33, 33);border-style:solid; border-color:rgb(237, 233, 233);">Hora Fin: <%= rutinas[i].hourfinish %></li>
+          <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color:  rgb(232, 200, 14); background-color:rgb(36, 33, 33);border-style:solid; border-color:rgb(237, 233, 233);">Alimentacion: <%= rutinas[i].eat %></li>
+
+
+          <!-- ESTADOS -->
+          <% if(rutinas[i].status== true) {%>
+
+            <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(232, 200, 14); background-color:rgb(36, 33, 33);border-style:solid; border-color:rgb(237, 233, 233);"> Estado: Guardado ☑
+            </li>
+             
+          <% } else { %> 
+          <li class="list-group-item " style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(232, 200, 14); background-color:rgb(36, 33, 33);border-style:solid; border-color:rgb(237, 233, 233);"> Estado:
+             <a href="/cambiarEstado/<%= rutinas[i]._id %>" class= "btn" style="background-color:rgb(232, 200, 14); color: black;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Guardar</a>
+             <a href="/delete/<%= rutinas[i]._id %>" class="btn btn-danger">Borrar</a>
+          </li>
+          <% } %> 
+        </ul>        
+    </div>
+    <% } %>  
+  </div>
+</div>
+
+
+<%- include("partials/footer") -%> 
